@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed = 2f;
     public float height = 3f;
+    public Sprite[] jump;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey ("d") || Input.GetKey(KeyCode.RightArrow)) {
             GetComponent<SpriteRenderer>().flipX = false;
             pos.x += speed * Time.deltaTime;
-        }
-        if (Input.GetKey ("a") || Input.GetKey(KeyCode.LeftArrow)) {
+        } else if (Input.GetKey ("a") || Input.GetKey(KeyCode.LeftArrow)) {
             GetComponent<SpriteRenderer>().flipX = true;
             pos.x -= speed * Time.deltaTime;
         }
@@ -33,9 +33,33 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionStay2D(Collision2D coll)
     {
         //Debug.Log(coll.gameObject.name);
+        if (GetComponent<InventoryTracker>().hasRemote && coll.gameObject.name == "Floor") {
+            GetComponent<SpriteRenderer>().sprite = GetComponent<InventoryTracker>().newSprite[1];
+        } else {
+            GetComponent<SpriteRenderer>().sprite = GetComponent<InventoryTracker>().newSprite[0];
+        }
+
+        if (Input.GetKey ("d") || Input.GetKey(KeyCode.RightArrow) || Input.GetKey ("a") || Input.GetKey(KeyCode.LeftArrow)) {
+            GetComponent<Animator>().enabled = true;
+        } else {
+            GetComponent<Animator>().enabled = false;
+        }
+
         if (coll.gameObject.name == "Floor" && (Input.GetKey ("space") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w")))
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, height), ForceMode2D.Impulse);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D coll) 
+    {
+        if (coll.gameObject.name == "Floor") {
+            if (GetComponent<InventoryTracker>().hasRemote) {
+                GetComponent<SpriteRenderer>().sprite = jump[1];
+            } else {
+                GetComponent<SpriteRenderer>().sprite = jump[0];
+            }
+            GetComponent<Animator>().enabled = false;
         }
     }
 }

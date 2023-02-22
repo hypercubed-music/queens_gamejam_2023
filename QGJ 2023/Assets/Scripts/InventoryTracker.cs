@@ -5,6 +5,8 @@ using UnityEngine;
 public class InventoryTracker : MonoBehaviour
 {
     public bool hasRemote = false;
+    bool[] track = {false};
+    public Sprite[] newSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +16,8 @@ public class InventoryTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasRemote) {
-            //Debug.Log("OK");
+        if (hasRemote && !track[0]) {
+            GetComponent<SpriteRenderer>().sprite = newSprite[0]; //Change sprite
         }
     }
 }

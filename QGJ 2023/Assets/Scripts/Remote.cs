@@ -16,14 +16,14 @@ public class Remote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(this.gameObject.transform.position.x - player.transform.position.x) < dist) {
-            window.GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetKey ("e")) {
+        if (Mathf.Abs(this.gameObject.transform.position.x - player.transform.position.x) < dist) { //Close enough to object
+            window.GetComponent<SpriteRenderer>().enabled = true; //Interaction window shown
+            if (Input.GetKey ("e")) { //Press e
                 player.GetComponent<InventoryTracker>().hasRemote = true;
                 this.gameObject.SetActive(false);
             }
         } else {
-            window.GetComponent<SpriteRenderer>().enabled = false;
+            window.GetComponent<SpriteRenderer>().enabled = false; //Interaction window disappears
         }
     }
 }

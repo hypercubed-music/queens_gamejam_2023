@@ -19,15 +19,15 @@ public class RepairBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(this.gameObject.transform.position.x - player.transform.position.x) < dist && player.GetComponent<InventoryTracker>().hasRemote) {
-            window.GetComponent<SpriteRenderer>().enabled = true;
-            if (Input.GetKey ("e")) {
+        if (Mathf.Abs(this.gameObject.transform.position.x - player.transform.position.x) < dist && player.GetComponent<InventoryTracker>().hasRemote) { //Close enough to object and has remote
+            window.GetComponent<SpriteRenderer>().enabled = true; //Interaction window shown
+            if (Input.GetKey ("e")) { //Press e
                 window.SetActive(false);
-                StartCoroutine(moveToX(this.gameObject.transform, smartBot.transform.position, 1.0f));
+                StartCoroutine(moveToX(this.gameObject.transform, smartBot.transform.position, 1.0f)); //Fix SmartBot
                 this.enabled = false;
             }
         } else {
-            window.GetComponent<SpriteRenderer>().enabled = false;
+            window.GetComponent<SpriteRenderer>().enabled = false; //Interaction window disappears
         }
     }
 
@@ -48,7 +48,7 @@ public class RepairBot : MonoBehaviour
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x, startPos.y), counter / duration);
+            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x - 1.0f, startPos.y), counter / duration);
             yield return null;
         }
 
@@ -62,6 +62,8 @@ public class RepairBot : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         smoke[0].transform.rotation = new Quaternion(0, 0, 0, 0);
         smoke[0].GetComponent<SpriteRenderer>().enabled = false;
+
+        smartBot.GetComponent<SmartBot>().enabled = true;
 
         isMoving = false;
     }

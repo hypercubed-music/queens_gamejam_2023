@@ -10,6 +10,8 @@ public class RepairBot : MonoBehaviour
     public float dist = 2.5f;
     bool isMoving = false;
     public GameObject[] smoke;
+
+    public Sprite[] frames;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,14 +55,15 @@ public class RepairBot : MonoBehaviour
         }
 
         smoke[0].GetComponent<SpriteRenderer>().enabled = true;
+        smoke[0].GetComponent<SpriteRenderer>().sprite = frames[0];
         yield return new WaitForSeconds(0.25f);
-        smoke[0].transform.rotation = new Quaternion(0, 0, 180, 0);
+        smoke[0].GetComponent<SpriteRenderer>().sprite = frames[1];
         yield return new WaitForSeconds(0.25f);
-        smoke[0].transform.rotation = new Quaternion(0, 0, 0, 0);
+        smoke[0].GetComponent<SpriteRenderer>().sprite = frames[2];
         yield return new WaitForSeconds(0.25f);
-        smoke[0].transform.rotation = new Quaternion(0, 0, 180, 0);
+        smoke[0].GetComponent<SpriteRenderer>().sprite = frames[3];
         yield return new WaitForSeconds(0.25f);
-        smoke[0].transform.rotation = new Quaternion(0, 0, 0, 0);
+        smoke[0].GetComponent<SpriteRenderer>().sprite = frames[0];
         smoke[0].GetComponent<SpriteRenderer>().enabled = false;
 
         smartBot.GetComponent<SmartBot>().enabled = true;

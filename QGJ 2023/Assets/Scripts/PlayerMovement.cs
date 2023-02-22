@@ -19,9 +19,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pos = transform.position;
         
         if (Input.GetKey ("d") || Input.GetKey(KeyCode.RightArrow)) {
+            GetComponent<SpriteRenderer>().flipX = false;
             pos.x += speed * Time.deltaTime;
         }
         if (Input.GetKey ("a") || Input.GetKey(KeyCode.LeftArrow)) {
+            GetComponent<SpriteRenderer>().flipX = true;
             pos.x -= speed * Time.deltaTime;
         }
  

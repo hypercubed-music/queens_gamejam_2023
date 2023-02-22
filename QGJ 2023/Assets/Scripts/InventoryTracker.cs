@@ -17,7 +17,9 @@ public class InventoryTracker : MonoBehaviour
     void Update()
     {
         if (hasRemote && !track[0]) {
-            GetComponent<SpriteRenderer>().sprite = newSprite[0]; //Change sprite
+            GetComponent<SpriteRenderer>().sprite = newSprite[1]; //Change sprite
+            GetComponent<Animator>().SetBool("hasRemote", true); //Change walking animation
+            track[0] = true;
         }
     }
 }

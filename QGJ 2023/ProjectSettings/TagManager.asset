@@ -41,6 +41,9 @@ TagManager:
   - name: Bots
     uniqueID: 1462089507
     locked: 0
+  - name: Smart
+    uniqueID: 3189798041
+    locked: 0
   - name: FX
     uniqueID: 3479737733
     locked: 0

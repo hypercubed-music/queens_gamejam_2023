@@ -20,6 +20,7 @@ public class Remote : MonoBehaviour
             window.GetComponent<SpriteRenderer>().enabled = true; //Interaction window shown
             if (Input.GetKey ("e")) { //Press e
                 player.GetComponent<InventoryTracker>().hasRemote = true;
+                window.GetComponent<SpriteRenderer>().enabled = false; //Interaction window disappears
                 this.gameObject.SetActive(false);
             }
         } else {

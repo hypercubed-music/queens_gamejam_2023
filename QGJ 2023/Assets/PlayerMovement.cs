@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 1.5f;
+    public float speed = 2f;
+    public float height = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +26,14 @@ public class PlayerMovement : MonoBehaviour
         }
  
         transform.position = pos;
+    }
+
+    void OnCollisionStay2D(Collision2D coll)
+    {
+        //Debug.Log(coll.gameObject.name);
+        if (coll.gameObject.name == "Floor" && (Input.GetKey ("space") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w")))
+        {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, height), ForceMode2D.Impulse);
+        }
     }
 }

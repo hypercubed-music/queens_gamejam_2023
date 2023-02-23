@@ -5,6 +5,8 @@ using UnityEngine;
 public class InventoryTracker : MonoBehaviour
 {
     public bool hasRemote = false;
+    public bool hasSmart = false;
+    public bool hasPlatform = false;
     bool[] track = {false};
     public Sprite[] newSprite;
     // Start is called before the first frame update

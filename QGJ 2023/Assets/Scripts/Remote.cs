@@ -6,7 +6,7 @@ public class Remote : MonoBehaviour
 {
     public GameObject player;
     public GameObject window;
-    public float dist = 2.5f;
+    public float dist = 3f;
     // Start is called before the first frame update
     void Start()
     {

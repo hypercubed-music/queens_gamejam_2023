@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{
+{ 
     public float speed = 2f;
     public float height = 3f;
     public Sprite[] jump;
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Animator>().enabled = false;
         }
 
-        if (coll.gameObject.name == "Floor" && (Input.GetKey ("space") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w")))
+        if (coll.gameObject.name == "Floor" && (Input.GetKey ("space") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w")) && GetComponent<Rigidbody2D>().velocity.y == 0f)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, height), ForceMode2D.Impulse);
         }

@@ -13,6 +13,7 @@ public class SmartBot : MonoBehaviour
     {
         StartCoroutine(moveToX(this.gameObject.transform, player.transform.position, 1.0f)); //Move to player
         speed = player.GetComponent<PlayerMovement>().speed;
+        player.GetComponent<InventoryTracker>().hasSmart = true;
     }
 
     // Update is called once per frame

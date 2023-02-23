@@ -106,6 +106,8 @@ public class PlatformBot : MonoBehaviour
 
         if (name == "Lifter Bot") {
             child.GetComponent<BoxCollider2D>().enabled = false;
+        } else if (name == "Fast Bot") {
+            player.GetComponent<InventoryTracker>().hasFast = true;
         }
     }
 }

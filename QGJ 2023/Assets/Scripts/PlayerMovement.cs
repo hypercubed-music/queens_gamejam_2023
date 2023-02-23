@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionStay2D(Collision2D coll)
     {
         //Debug.Log(coll.gameObject.name);
-        if (GetComponent<InventoryTracker>().hasRemote && coll.gameObject.name == "Floor") {
+        if (GetComponent<InventoryTracker>().hasRemote) {
             GetComponent<SpriteRenderer>().sprite = GetComponent<InventoryTracker>().newSprite[1];
         } else {
             GetComponent<SpriteRenderer>().sprite = GetComponent<InventoryTracker>().newSprite[0];
@@ -56,17 +56,19 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, height), ForceMode2D.Impulse);
         }
+
+        if (coll.gameObject.name == "Conveyor" && !GetComponent<InventoryTracker>().hasFast) {
+            transform.position = new Vector2(transform.position.x - (3 * speed * Time.deltaTime), transform.position.y);
+        }
     }
 
     void OnCollisionExit2D(Collision2D coll) 
     {
-        if (coll.gameObject.name == "Floor") {
             if (GetComponent<InventoryTracker>().hasRemote) {
                 GetComponent<SpriteRenderer>().sprite = jump[1];
             } else {
                 GetComponent<SpriteRenderer>().sprite = jump[0];
             }
             GetComponent<Animator>().enabled = false;
-        }
     }
 }

@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (coll.gameObject.name == "Water") {
             this.gameObject.transform.position = new Vector2 (-38, this.gameObject.transform.position.y);
+        } else if (coll.gameObject.name == "Water (1)") {
+            this.gameObject.transform.position = new Vector2 (55.5f, this.gameObject.transform.position.y);
         }
     }
 

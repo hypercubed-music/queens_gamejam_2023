@@ -28,10 +28,14 @@ public class PlatformBot : MonoBehaviour
     {
         if (Mathf.Abs(this.gameObject.transform.position.x - player.transform.position.x) < dist && player.GetComponent<InventoryTracker>().hasSmart) { //Close enough to object and has Smart Bot
             window.GetComponent<SpriteRenderer>().enabled = true; //Interaction window shown
-            if (Input.GetKey ("e")) { //Press e
+            if (Input.GetKey ("e") && name != "Diver Bot") { //Press e
                 window.SetActive(false);
                 flash.GetComponent<SpriteRenderer>().enabled = true;
                 StartCoroutine(moveToX(repairBot.transform, this.gameObject.transform.position, 2.0f)); //Fix PlatformBot
+                this.enabled = false;
+            } else if (Input.GetKey ("e")) {
+                window.SetActive(false);
+                StartCoroutine(moveToY(this.gameObject.transform, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y - dist2), 1.0f)); //Fix PlatformBot
                 this.enabled = false;
             }
         } else {
@@ -102,12 +106,38 @@ public class PlatformBot : MonoBehaviour
 
         isMoving = false;
 
-        player.GetComponent<InventoryTracker>().hasPlatform = true;
-
         if (name == "Lifter Bot") {
             child.GetComponent<BoxCollider2D>().enabled = false;
         } else if (name == "Fast Bot") {
             player.GetComponent<InventoryTracker>().hasFast = true;
+        } else if (name == "Platform Bot") {
+            player.GetComponent<InventoryTracker>().hasPlatform = true;
         }
+    }
+
+    IEnumerator moveToY(Transform fromPosition, Vector3 toPosition, float duration) 
+    {
+        //Make sure there is only one instance of this function running
+        if (isMoving)
+        {
+            yield break; ///exit if this is still running
+        }
+        isMoving = true;
+
+        float counter = 0;
+
+        //Get the current position of the object to be moved
+        Vector2 startPos = fromPosition.position;
+
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x, toPosition.y), counter / duration);
+            yield return null;
+        }
+
+        isMoving = false;
+
+        child.GetComponent<PlatformClue>().enabled = true;
     }
 }

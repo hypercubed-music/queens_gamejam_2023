@@ -15,7 +15,9 @@ public class MoveCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.x < -dist) {
+        if (player.transform.position.x < (-3 * dist)) {
+            transform.position = new Vector3(-4 * dist, 0, -10); //Move camera left
+        } else if (player.transform.position.x < -dist) {
             transform.position = new Vector3(-2 * dist, 0, -10); //Move camera left
         } else if (player.transform.position.x > dist) {
             transform.position = new Vector3(2 * dist, 0, -10); //Move camera right

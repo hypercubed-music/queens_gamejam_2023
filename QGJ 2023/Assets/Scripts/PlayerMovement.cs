@@ -30,6 +30,13 @@ public class PlayerMovement : MonoBehaviour
         transform.position = pos;
     }
 
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.name == "Water") {
+            this.gameObject.transform.position = new Vector2 (-38, this.gameObject.transform.position.y);
+        }
+    }
+
     void OnCollisionStay2D(Collision2D coll)
     {
         //Debug.Log(coll.gameObject.name);

@@ -6,12 +6,12 @@ public class PlatformBot : MonoBehaviour
 {
     public GameObject player;
     public GameObject window;
-    public GameObject platformCollider;
     public GameObject repairBot;
     public GameObject flash;
     public float dist = 2.5f;
     bool isMoving = false;
     public GameObject[] smoke;
+    public float dist2 = -6f;
 
     public Sprite[] frames;
     // Start is called before the first frame update
@@ -93,7 +93,7 @@ public class PlatformBot : MonoBehaviour
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x - 6f, startPos.y), counter / duration);
+            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x + dist2, startPos.y), counter / duration);
             yield return null;
         }
 

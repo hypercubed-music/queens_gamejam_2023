@@ -50,7 +50,7 @@ public class PlatformClue : MonoBehaviour
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x, startPos.y), counter / duration);
+            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x, toPosition.y), counter / duration);
             yield return null;
         }
 

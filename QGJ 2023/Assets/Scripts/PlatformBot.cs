@@ -13,6 +13,9 @@ public class PlatformBot : MonoBehaviour
     public GameObject[] smoke;
     public float dist2 = -6f;
 
+    public float dir = 1;
+    public GameObject child;
+
     public Sprite[] frames;
     // Start is called before the first frame update
     void Start()
@@ -53,7 +56,7 @@ public class PlatformBot : MonoBehaviour
         while (counter < duration)
         {
             counter += Time.deltaTime;
-            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x + 2.5f, startPos.y), counter / duration);
+            fromPosition.position = Vector2.Lerp(startPos, new Vector2(toPosition.x + (dir * 2.5f), startPos.y), counter / duration);
             yield return null;
         }
 
@@ -100,5 +103,9 @@ public class PlatformBot : MonoBehaviour
         isMoving = false;
 
         player.GetComponent<InventoryTracker>().hasPlatform = true;
+
+        if (name == "Lifter Bot") {
+            child.GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class SmartBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isMoving) { //Flawed follow player script
+        if (!isMoving && player.transform.position.x > -38) { //Flawed follow player script
             Vector3 pos = transform.position;
         
             if (Input.GetKey ("d") || Input.GetKey(KeyCode.RightArrow)) {

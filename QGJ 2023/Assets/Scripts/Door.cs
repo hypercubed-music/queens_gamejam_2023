@@ -48,8 +48,8 @@ public class Door : MonoBehaviour
 
     IEnumerator ending() {
         GetComponent<SpriteRenderer>().sprite = open;
-        yield return new WaitForSeconds(0.5f);
         tall.GetComponent<SpriteRenderer>().enabled = true;
         this.enabled = false;
+        yield return new WaitForSeconds(0.5f);
     }
 }

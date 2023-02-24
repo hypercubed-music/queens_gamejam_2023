@@ -66,6 +66,7 @@ public class PlatformClue : MonoBehaviour
 
         isMoving = false;
         cam.GetComponent<MoveCam>().enabled = true;
+        player.GetComponent<InventoryTracker>().clues += 1;
         this.gameObject.SetActive(false);
 
     }

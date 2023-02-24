@@ -11,6 +11,7 @@ public class InventoryTracker : MonoBehaviour
     public bool hasFast = false;
     bool[] track = {false};
     public Sprite[] newSprite;
+    public int clues = 0;
     // Start is called before the first frame update
     void Start()
     {

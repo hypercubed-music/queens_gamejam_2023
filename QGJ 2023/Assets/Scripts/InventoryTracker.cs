@@ -9,6 +9,7 @@ public class InventoryTracker : MonoBehaviour
     public bool hasPlatform = false;
 
     public bool hasFast = false;
+    public bool hasTall = false;
     bool[] track = {false};
     public Sprite[] newSprite;
     public int clues = 0;

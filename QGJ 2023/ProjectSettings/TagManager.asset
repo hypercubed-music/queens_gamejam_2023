@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Blackboard
+    uniqueID: 2140728217
+    locked: 0
   - name: Bots
     uniqueID: 1462089507
     locked: 0

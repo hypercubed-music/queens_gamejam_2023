@@ -5472,7 +5472,7 @@ MonoBehaviour:
   newSprite:
   - {fileID: 21300000, guid: 4a0e8967c4d8af541bf51a0039e66472, type: 3}
   - {fileID: 21300000, guid: 5169f3a2444bd7e42a4dec88381583c0, type: 3}
-  clues: 5
+  clues: 0
 --- !u!61 &1271309114
 BoxCollider2D:
   m_ObjectHideFlags: 0

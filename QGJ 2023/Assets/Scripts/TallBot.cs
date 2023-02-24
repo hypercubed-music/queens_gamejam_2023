@@ -94,5 +94,6 @@ public class TallBot : MonoBehaviour
         hold.GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
         hold.transform.position = new Vector2(segment1.transform.position.x - 0.45f, hold.transform.position.y);
         hold.GetComponent<BoxCollider2D>().enabled = true;
+        hold.GetComponent<Balloon>().enabled = true;
     }
 }

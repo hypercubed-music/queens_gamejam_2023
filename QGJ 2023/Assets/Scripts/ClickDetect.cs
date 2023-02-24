@@ -90,12 +90,14 @@ public class ClickDetect : MonoBehaviour
 
     IEnumerator Wrong() 
     {
-        foreach (GameObject i in GetComponent<Keypad>().slots) {
-            i.GetComponent<SpriteRenderer>().sprite = red;
-        }
-        yield return new WaitForSeconds(0.5f);
-        foreach (GameObject i in GetComponent<Keypad>().slots) {
-            i.GetComponent<SpriteRenderer>().sprite = null;
+        for (int j = 1; j <= 5; j++) {
+            foreach (GameObject i in GetComponent<Keypad>().slots) {
+                i.GetComponent<SpriteRenderer>().sprite = red;
+            }
+            yield return new WaitForSeconds(0.1f);
+            foreach (GameObject i in GetComponent<Keypad>().slots) {
+                i.GetComponent<SpriteRenderer>().sprite = null;
+            }
         }
     }
 }

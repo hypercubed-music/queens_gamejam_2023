@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 499033577
+    locked: 0
   - name: Blackboard
     uniqueID: 2140728217
     locked: 0

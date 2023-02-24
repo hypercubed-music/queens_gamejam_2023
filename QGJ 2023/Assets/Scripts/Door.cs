@@ -9,6 +9,7 @@ public class Door : MonoBehaviour
     public GameObject floor;
      public GameObject balloon;
     public GameObject window;
+    public GameObject tall;
     public float dist = 2.5f;
     public GameObject keypad;
     public Sprite open;
@@ -41,8 +42,14 @@ public class Door : MonoBehaviour
         }
 
         if (player.GetComponent<InventoryTracker>().hasTall) {
-            GetComponent<SpriteRenderer>().sprite = open;
-            this.enabled = false;
+            StartCoroutine(ending());
         }
+    }
+
+    IEnumerator ending() {
+        GetComponent<SpriteRenderer>().sprite = open;
+        yield return new WaitForSeconds(0.5f);
+        tall.GetComponent<SpriteRenderer>().enabled = true;
+        this.enabled = false;
     }
 }
